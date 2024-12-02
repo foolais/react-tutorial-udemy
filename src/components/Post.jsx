@@ -1,12 +1,11 @@
-const names = ["Author", "Co-Author"];
-
-function Post() {
-  const chosenName = Math.random() > 0.5 ? names[0] : names[1];
+/* eslint-disable react/prop-types */
+function Post(props) {
+  const { author, body } = props;
 
   return (
     <div>
-      <p>{chosenName}</p>
-      <p>Body of the post</p>
+      <p>{author}</p>
+      <p>{body}</p>
     </div>
   );
 }
