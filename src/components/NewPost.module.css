@@ -2,13 +2,7 @@
   background-color: teal;
   padding: 2rem;
   width: max-content;
-  margin: 2rem auto;
   text-align: left;
-  border-radius: 8px;
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
-  -ms-border-radius: 8px;
-  -o-border-radius: 8px;
 }
 
 .form label {

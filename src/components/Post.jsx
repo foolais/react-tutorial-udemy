@@ -1,9 +1,7 @@
 /* eslint-disable react/prop-types */
 import styles from "./Post.module.css";
 
-function Post(props) {
-  const { author, body } = props;
-
+function Post({ author, body }) {
   return (
     <li className={styles.post}>
       <p className={styles.author}>{author}</p>

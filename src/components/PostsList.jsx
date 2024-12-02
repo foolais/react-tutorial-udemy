@@ -1,28 +1,48 @@
 import Post from "./Post";
 import NewPost from "./NewPost";
+import Modal from "./Modal";
 import styles from "./PostsList.module.css";
 import { useState } from "react";
 
 function PostList() {
-  const [author, setAuthor] = useState("The Impostor");
-  const [body, setBody] = useState("Something here...");
+  const [newPost, setNewPost] = useState({
+    author: "The Impostor",
+    body: "Something here..",
+  });
+  const [isModalOpen, setIsModalOpen] = useState(true);
 
   function postChangeHandler(event, type) {
     const { value } = event.target;
+    let newValues;
     if (type === "author") {
-      setAuthor(value && value.length > 0 ? value : "The Impostor");
+      newValues = value && value.length > 0 ? value : "The Impostor";
     } else if (type === "body") {
-      setBody(value && value.length > 0 ? value : "Something here..");
+      newValues = value && value.length > 0 ? value : "Something here...";
     }
+
+    setNewPost((prev) => {
+      return {
+        ...prev,
+        [type]: newValues,
+      };
+    });
+  }
+
+  function onClose() {
+    setIsModalOpen(false);
   }
 
   return (
     <>
-      <NewPost postChangeHandler={postChangeHandler} />
+      {isModalOpen ? (
+        <Modal onClose={onClose}>
+          <NewPost postChangeHandler={postChangeHandler} />
+        </Modal>
+      ) : null}
       <ul className={styles.postList}>
         <Post author="Author" body="Body Author" />
         <Post author="Co-Author" body="Body Co-Author" />
-        <Post author={author} body={body} />
+        <Post author={newPost.author} body={newPost.body} />
       </ul>
     </>
   );
