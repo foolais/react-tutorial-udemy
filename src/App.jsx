@@ -1,11 +1,10 @@
 import "./App.css";
-import Post from "./components/Post";
+import PostsList from "./components/PostsList";
 
 function App() {
   return (
     <main>
-      <Post author="Author" body="Body" />
-      <Post author="Co-Author" body="Body Co-Author" />
+      <PostsList />
     </main>
   );
 }

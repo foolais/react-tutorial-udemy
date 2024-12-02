@@ -5,10 +5,10 @@ function Post(props) {
   const { author, body } = props;
 
   return (
-    <div className={styles.post}>
+    <li className={styles.post}>
       <p className={styles.author}>{author}</p>
       <p className={styles.text}>{body}</p>
-    </div>
+    </li>
   );
 }
 

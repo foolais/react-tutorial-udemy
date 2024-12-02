@@ -3,6 +3,9 @@
   line-height: 1.5;
   font-weight: 400;
 
+  margin: 0;
+  padding: 0;
+
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
 
@@ -12,7 +15,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-body {
+* {
   margin: 0;
-  text-align: center;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
 }
