@@ -1,15 +1,15 @@
+/* eslint-disable react/prop-types */
 import Post from "./Post";
 import NewPost from "./NewPost";
 import Modal from "./Modal";
 import styles from "./PostsList.module.css";
 import { useState } from "react";
 
-function PostList() {
+function PostList({ isModalOpen, showModalHandler }) {
   const [newPost, setNewPost] = useState({
     author: "The Impostor",
     body: "Something here..",
   });
-  const [isModalOpen, setIsModalOpen] = useState(true);
 
   function postChangeHandler(event, type) {
     const { value } = event.target;
@@ -28,14 +28,10 @@ function PostList() {
     });
   }
 
-  function onClose() {
-    setIsModalOpen(false);
-  }
-
   return (
     <>
       {isModalOpen ? (
-        <Modal onClose={onClose}>
+        <Modal onClose={() => showModalHandler(false)}>
           <NewPost postChangeHandler={postChangeHandler} />
         </Modal>
       ) : null}
