@@ -1,0 +1,28 @@
+.post {
+  background-color: teal;
+  padding: 1rem;
+  margin: 1rem 0;
+  max-width: 200px;
+  animation: fade-in 2s ease-in-out;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  -webkit-animation: fade-in 2s ease-in-out;
+}
+
+.author {
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: black;
+  text-transform: uppercase;
+}
+
+.text {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-size: 1.25rem;
+  margin: 0.25rem 0 0 0;
+  font-style: italic;
+}
