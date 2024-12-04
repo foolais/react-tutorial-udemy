@@ -6,12 +6,7 @@ import styles from "./PostsList.module.css";
 import { useState } from "react";
 
 function PostList({ isModalOpen, showModalHandler }) {
-  const [posts, setPosts] = useState([
-    {
-      author: "John Doe",
-      body: "My first post",
-    },
-  ]);
+  const [posts, setPosts] = useState([]);
 
   function addPostHandler(newPost) {
     setPosts((prev) => [...prev, newPost]);
@@ -27,11 +22,18 @@ function PostList({ isModalOpen, showModalHandler }) {
           />
         </Modal>
       ) : null}
-      <ul className={styles.postList}>
-        {posts.map((post, index) => (
-          <Post key={index} author={post.author} body={post.body} />
-        ))}
-      </ul>
+      {posts && posts.length > 0 ? (
+        <ul className={styles.postList}>
+          {posts.map((post, index) => (
+            <Post key={index} author={post.author} body={post.body} />
+          ))}
+        </ul>
+      ) : (
+        <div style={{ textAlign: "center", color: "teal" }}>
+          <h2>There are no posts yet.</h2>
+          <p>start adding some!</p>
+        </div>
+      )}
     </>
   );
 }
