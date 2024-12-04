@@ -31,8 +31,11 @@ function PostList({ isModalOpen, showModalHandler }) {
   return (
     <>
       {isModalOpen ? (
-        <Modal onClose={() => showModalHandler(false)}>
-          <NewPost postChangeHandler={postChangeHandler} />
+        <Modal>
+          <NewPost
+            postChangeHandler={postChangeHandler}
+            onClose={() => showModalHandler(false)}
+          />
         </Modal>
       ) : null}
       <ul className={styles.postList}>

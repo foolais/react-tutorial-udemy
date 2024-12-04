@@ -2,7 +2,7 @@
 import styles from "./NewPost.module.css";
 
 function NewPost(props) {
-  const { postChangeHandler } = props;
+  const { postChangeHandler, onClose } = props;
 
   return (
     <form className={styles.form}>
@@ -24,6 +24,12 @@ function NewPost(props) {
           rows={3}
           onChange={(event) => postChangeHandler(event, "body")}
         />
+      </p>
+      <p className={styles.actions}>
+        <button type="button" onClick={onClose}>
+          Cancel
+        </button>
+        <button type="submit">Submit</button>
       </p>
     </form>
   );
