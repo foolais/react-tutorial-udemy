@@ -1,11 +1,34 @@
 /* eslint-disable react/prop-types */
+import { useState } from "react";
 import styles from "./NewPost.module.css";
 
 function NewPost(props) {
-  const { postChangeHandler, onClose } = props;
+  const { onClose, addPostHandler } = props;
+
+  const [newPost, setNewPost] = useState({
+    author: "",
+    body: "",
+  });
+
+  function postChangeHandler(event, type) {
+    const { value } = event.target;
+
+    setNewPost((prev) => {
+      return {
+        ...prev,
+        [type]: value,
+      };
+    });
+  }
+
+  function submitHandler(event) {
+    event.preventDefault();
+    addPostHandler(newPost);
+    onClose();
+  }
 
   return (
-    <form className={styles.form}>
+    <form className={styles.form} onSubmit={submitHandler}>
       <p className={styles.title}>New Post</p>
       <p>
         <label htmlFor="author">Your Name</label>

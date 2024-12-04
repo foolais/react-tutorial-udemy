@@ -6,26 +6,15 @@ import styles from "./PostsList.module.css";
 import { useState } from "react";
 
 function PostList({ isModalOpen, showModalHandler }) {
-  const [newPost, setNewPost] = useState({
-    author: "The Impostor",
-    body: "Something here..",
-  });
+  const [posts, setPosts] = useState([
+    {
+      author: "John Doe",
+      body: "My first post",
+    },
+  ]);
 
-  function postChangeHandler(event, type) {
-    const { value } = event.target;
-    let newValues;
-    if (type === "author") {
-      newValues = value && value.length > 0 ? value : "The Impostor";
-    } else if (type === "body") {
-      newValues = value && value.length > 0 ? value : "Something here...";
-    }
-
-    setNewPost((prev) => {
-      return {
-        ...prev,
-        [type]: newValues,
-      };
-    });
+  function addPostHandler(newPost) {
+    setPosts((prev) => [...prev, newPost]);
   }
 
   return (
@@ -33,15 +22,15 @@ function PostList({ isModalOpen, showModalHandler }) {
       {isModalOpen ? (
         <Modal>
           <NewPost
-            postChangeHandler={postChangeHandler}
             onClose={() => showModalHandler(false)}
+            addPostHandler={addPostHandler}
           />
         </Modal>
       ) : null}
       <ul className={styles.postList}>
-        <Post author="Author" body="Body Author" />
-        <Post author="Co-Author" body="Body Co-Author" />
-        <Post author={newPost.author} body={newPost.body} />
+        {posts.map((post, index) => (
+          <Post key={index} author={post.author} body={post.body} />
+        ))}
       </ul>
     </>
   );
